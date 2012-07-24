@@ -1,14 +1,14 @@
-### Cross Browser Text Storage \[localStorage\]
+### Cross-Browser & Cross-Page Text Storage \[localStorage\]
 
 ------------------------------------------------
-### \# the dir:
+### \# files:
 
 ```bash
 .
 ├── index.html					demo page
-├── jquery-storage.js			jQuery plugin
+├── jquery-storage.js				jQuery plugin
 ├── readme.md					
-└── storage.html				iframe source with textStorage.js
+└── storage.html					iframe source with textStorage.js
 ```
 
 ### \# useage: 
