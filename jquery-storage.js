@@ -1,4 +1,4 @@
-/*! copyright: sofish@me.com https://github.com/sofish */
+/*! copyright: sofish@me.com https://github.com/sofish/storage.js */
 (function($){
 
     // you need the line below when the file hosted on different sub-domain
