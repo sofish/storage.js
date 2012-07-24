@@ -1,7 +1,17 @@
 ### Cross Browser Text Storage \[localStorage\]
 
 ------------------------------------------------
-### \# Useage: 
+### \# the dir:
+
+```bash
+.
+├── index.html					demo page
+├── jquery-storage.js			jQuery plugin
+├── readme.md					
+└── storage.html				iframe source with textStorage.js
+```
+
+### \# useage: 
 
 it works cross-page and cross-browser(include IE6+).
 
@@ -42,7 +52,7 @@ $('body').storage.get('keyName'); // 'the value of the key'
 iframe.attr('src', './storage.php');
 ```
 
-### \# Cross Domain:
+### \# cross domain:
 
 if your app need to works with pages that have different sub-domain. you need to add one more line on both `jquery-storage.js` and `storage.html`:
 
