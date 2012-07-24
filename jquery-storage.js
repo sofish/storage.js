@@ -1,6 +1,10 @@
 /*! copyright: sofish@me.com https://github.com/sofish */
 (function($){
 
+    // you need the line below when the file hosted on different sub-domain
+    // document.domain = 'example.com';
+    // and please uncomment and set it to your own as well as on storage.html
+
 	if(typeof window.localStorage == 'undefined'){
 		var iframe = $('<iframe style="width:0;height:0;" frameBorder="0"></iframe>'),
 			i = 0,

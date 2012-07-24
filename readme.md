@@ -1,7 +1,7 @@
-## Cross Browser Text Storage \[localStorage\]
+### Cross Browser Text Storage \[localStorage\]
 
 ------------------------------------------------
-### Useage: 
+### \# Useage: 
 
 it works cross-page and cross-browser(include IE6+).
 
@@ -28,6 +28,39 @@ a sample:
 
 ```js
 $('body').storage.set('keyName', 'the value of the key');
-$('body').storage.get('keyName')
-// > 'the value of the key'
+$('body').storage.get('keyName'); // 'the value of the key'
 ```
+
+### set a right path to the iframe
+
+```js
+// you can find the line at storage.js
+// make sure the path of 'storage.php' is set correctly
+iframe.attr('src', './storage.php');
+```
+
+### Cross Domain:
+
+if your app need to works with pages that have different sub-domain. you need to add one more line on both `jquery-storage.js` and `storage.html`:
+
+```js
+document.domain = 'YOUR DOMAIN HOST';
+```
+for example, if you have `a.example.com` and `b.example.com` to host the files, you need to do like this:
+
+```js
+//storage.js
+document.domain = 'example.com';
+// the other code
+// ...
+```
+```html
+<!-- storage.html -->
+<script>
+document.domain = 'example.com';
+// the other code
+// ...
+<script>
+```
+
+Note that the fallback will not work with cross host.
