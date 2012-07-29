@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1,requiresActiveX=true" />
-	<title>web store</title>
-	<style type="text/css">
-		body{padding:30px;}
-	</style>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1,requiresActiveX=true" />
+    <title>web store</title>
+    <style type="text/css">
+        body{padding:30px;}
+    </style>
 </head>
 
 <body>
@@ -18,30 +18,26 @@
 <script type="text/javascript" src="http://static.baixing.net/media/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="./jquery-storage.js"></script>
 <script type="text/javascript">
-		
-// 如果在不同的子域下使用，比如 a.example.com 和 b.example.com
-// 需要这一句：document.domain = 'example.com';
-// storage.html 中也需要设置这一行
-		
-var textarea = $('#text'),
-	save = $('#save'),
-	load = $('#load'),
-	clear = $('#clear');
-	
-save.on('click', function(){
-	$(this).storage.set('text', textarea.val());
-});
 
-load.on('click', function(){
-	var text = $(this).storage.get('text') || 'nothing in localStorage';
-	textarea.val(text);
-});
+    var textarea = $('#text'),
+            save = $('#save'),
+            load = $('#load'),
+            clear = $('#clear');
 
-clear.on('click', function(){
-	$(this).storage.clear();
-	textarea.val('');
-});
+    save.on('click', function(){
+        $(this).storage.set('text', textarea.val());
+    });
 
-</script>	
+    load.on('click', function(){
+        var text = $(this).storage.get('text') || 'nothing in localStorage';
+        textarea.val(text);
+    });
+
+    clear.on('click', function(){
+        $(this).storage.clear();
+        textarea.val('');
+    });
+
+</script>
 </body>
 </html>

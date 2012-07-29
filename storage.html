@@ -1,85 +1,85 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>ie storage fallback</title>
-	</head>
-	<body>
+<head>
+    <meta charset="utf-8" />
+    <title>ie storage fallback</title>
+</head>
+<body>
 
-		<script type="text/javascript">
-			// you need the line below when the file hosted on different sub-domain
-			// document.domain = 'example.com';
+<script type="text/javascript">
+    // you need the line below when the file hosted on different sub-domain
+    // document.domain = 'example.com';
 
-			/*! copyright: sofish@me.com https://github.com/sofish/storage.js */
-			typeof window.localStorage == 'undefined' && ~function () {
+    /*! copyright: sofish@me.com https://github.com/sofish/storage.js */
+    typeof window.localStorage == 'undefined' && ~function () {
 
-				var localStorage = window.localStorage = {},
-				prefix = 'data-userdata',
-				doc = document,
-				attrSrc = doc.body,
+        var localStorage = window.localStorage = {},
+                prefix = 'data-userdata',
+                doc = document,
+                attrSrc = doc.body,
 
-				// save attributeNames to <body>'s `data-userdata` attribute
-				mark = function (key, isRemove, temp, reg) {
+        // save attributeNames to <body>'s `data-userdata` attribute
+                mark = function (key, isRemove, temp, reg) {
 
-					attrSrc.load(prefix);
-					temp = attrSrc.getAttribute(prefix) || '';
-					reg = RegExp('\\b' + key + '\\b,?', 'i');
+                    attrSrc.load(prefix);
+                    temp = attrSrc.getAttribute(prefix) || '';
+                    reg = RegExp('\\b' + key + '\\b,?', 'i');
 
-					var hasKey = reg.test(temp) ? 1 : 0;
+                    var hasKey = reg.test(temp) ? 1 : 0;
 
-					temp = isRemove ? temp.replace(reg, '') : hasKey ? temp : temp === '' ? key : temp.split(',').concat(key).join(',');
+                    temp = isRemove ? temp.replace(reg, '') : hasKey ? temp : temp === '' ? key : temp.split(',').concat(key).join(',');
 
-					attrSrc.setAttribute(prefix, temp);
-					attrSrc.save(prefix);
+                    attrSrc.setAttribute(prefix, temp);
+                    attrSrc.save(prefix);
 
-				};
+                };
 
-				// add IE behavior support
-				attrSrc.addBehavior('#default#userData');
+        // add IE behavior support
+        attrSrc.addBehavior('#default#userData');
 
-				localStorage.getItem = function (key) {
-					key = key || 'lockeyfish';
-					attrSrc.load(key);
-					return attrSrc.getAttribute(key);
-				};
+        localStorage.getItem = function (key) {
+            key = key || 'lockeyfish';
+            attrSrc.load(key);
+            return attrSrc.getAttribute(key);
+        };
 
-				localStorage.setItem = function (key, value) {
-					key = key || 'lockeyfish';
-					attrSrc.setAttribute(key, value);
-					attrSrc.save(key);
-					mark(key);
-				};
+        localStorage.setItem = function (key, value) {
+            key = key || 'lockeyfish';
+            attrSrc.setAttribute(key, value);
+            attrSrc.save(key);
+            mark(key);
+        };
 
-				localStorage.removeItem = function (key) {
-					key = key || 'lockeyfish';
-					attrSrc.removeAttribute(key);
-					attrSrc.save(key);
-					mark(key, 1);
-				};
+        localStorage.removeItem = function (key) {
+            key = key || 'lockeyfish';
+            attrSrc.removeAttribute(key);
+            attrSrc.save(key);
+            mark(key, 1);
+        };
 
-				// clear all attributes on <body> tag that using for textStorage
-				// and clearing them from the
-				// 'data-userdata' attribute's value of <body> tag
-				localStorage.clear = function () {
+        // clear all attributes on <body> tag that using for textStorage
+        // and clearing them from the
+        // 'data-userdata' attribute's value of <body> tag
+        localStorage.clear = function () {
 
-					attrSrc.load(prefix);
+            attrSrc.load(prefix);
 
-					var attrs = attrSrc.getAttribute(prefix).split(','),
-					len = attrs.length;
+            var attrs = attrSrc.getAttribute(prefix).split(','),
+                    len = attrs.length;
 
-					if (attrs[0] === '') return;
+            if (attrs[0] === '') return;
 
-					for (var i = 0; i < len; i++) {
-						attrSrc.removeAttribute(attrs[i]);
-						attrSrc.save(attrs[i]);
-					};
+            for (var i = 0; i < len; i++) {
+                attrSrc.removeAttribute(attrs[i]);
+                attrSrc.save(attrs[i]);
+            };
 
-					attrSrc.setAttribute(prefix, '');
-					attrSrc.save(prefix);
+            attrSrc.setAttribute(prefix, '');
+            attrSrc.save(prefix);
 
-				};
+        };
 
-			}();
-		</script>
-	</body>
+    }();
+</script>
+</body>
 </html>
